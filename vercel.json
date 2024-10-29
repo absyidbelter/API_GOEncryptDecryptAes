@@ -2,14 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "src/controller/controller.go",
+      "src": "src/main.go",
       "use": "@vercel/go"
     }
   ],
   "routes": [
     {
-      "src": "/api/encrypt-decrypt",
-      "dest": "src/controller/controller.go"
+      "src": "/encrypt-decrypt",
+      "dest": "src/main.go"
     }
   ]
 }
