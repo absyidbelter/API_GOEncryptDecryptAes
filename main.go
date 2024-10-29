@@ -3,7 +3,6 @@ package main
 import (
 	"github.com/gin-gonic/gin"
 	"go_decryptEnc/src/controller"
-	"net/http"
 )
 
 func setupRouter() *gin.Engine {
@@ -12,12 +11,7 @@ func setupRouter() *gin.Engine {
 	return r
 }
 
-func VercelHandler(w http.ResponseWriter, r *http.Request) {
-	router := setupRouter()
-	router.ServeHTTP(w, r)
-}
-
 func main() {
 	router := setupRouter()
-	router.Run()
+	router.Run() // Starts the Gin server on localhost
 }
