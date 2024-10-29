@@ -14,7 +14,12 @@ func HandleEncryptDecrypt(c *gin.Context) {
 		return
 	}
 
-	salt := service.GetSalt(payload.EncSalt)
+	salt, err := service.GetSalt(payload.EncSalt)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
 	var result string
 	switch payload.Action {
 	case "encrypt":

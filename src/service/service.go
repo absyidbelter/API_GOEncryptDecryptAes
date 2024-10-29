@@ -36,7 +36,7 @@ func EncryptAES(plaintext, salt string) string {
 }
 
 // Fungsi untuk mendapatkan salt dari `encSalt`
-func GetSalt(encSalt string) string {
+func GetSalt(encSalt string) (string, error) {
 	type Turningcheck struct {
 		Check string `json:"check"`
 	}
@@ -49,10 +49,10 @@ func GetSalt(encSalt string) string {
 	err := json.Unmarshal([]byte(resultString), &check)
 	if err != nil {
 		fmt.Println("Error decoding salt:", err)
-		return ""
+		return "", err
 	}
 
-	return check.Check
+	return check.Check, nil
 }
 
 func DecryptAES(value, salt string) string {

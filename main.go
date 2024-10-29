@@ -7,6 +7,9 @@ import (
 
 func main() {
 	r := gin.Default()
-	r.POST("/crypto", controller.HandleEncryptDecrypt)
-	r.Run(":8080")
+	r.POST("/encrypt-decrypt", controller.HandleEncryptDecrypt)
+	err := r.Run()
+	if err != nil {
+		return
+	}
 }
